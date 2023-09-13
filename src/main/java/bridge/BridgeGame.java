@@ -38,7 +38,14 @@ public class BridgeGame {
     }
 
     public void move() {
-        
+
+    }
+
+    private boolean isGameDone(){
+        if(bridge.isCrossedDirection(visited) && GAME_RESULT){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -46,6 +53,30 @@ public class BridgeGame {
      * <p>
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void retry() {
+    public boolean retry(String word) {
+        validator.validateWord(word, RESTART, QUIT);
+        if(word.equals(RESTART)){
+            reInit();
+            return true;
+        }
+        return false;
+    }
+
+    private void reInit() {
+        visited = new ArrayList<>();
+        TRY_NUMBER += 1;
+        GAME_RESULT = true;
+    }
+
+    public int getTRY_NUMBER(){
+        return TRY_NUMBER;
+    }
+
+    public String getGameResult(){
+        String result = "실패";
+        if(isGameDone()){
+            result = "성공";
+        }
+        return result;
     }
 }

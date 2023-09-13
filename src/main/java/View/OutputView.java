@@ -32,24 +32,24 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult(String gameResult, int tryNumber) {
+    public static void printResult(String gameResult, int tryNumber) {
         System.out.println("게임 성공 여부: "+gameResult);
         System.out.println("총 시도한 횟수: "+tryNumber);
     }
 
-    public void printEnding(){
+    public static void printEnding(){
         System.out.println("최종 게임 결과");
     }
 
-    public void printStartGame(){
+    public static void printStartGame(){
         System.out.println("다리 건너기 게임을 시작합니다.");
     }
 
-    public void printEnter(){
+    public static void printEnter(){
         System.out.println();
     }
 
-    public void printErrorMessage(String e){
+    public static void printErrorMessage(String e){
         System.out.println(e);
     }
 

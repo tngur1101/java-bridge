@@ -12,10 +12,10 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printMap(List<String> bridgeResults) {
+    public static void printMap(List<String> bridgeResults) {
         System.out.print("[ ");
         for(int i=0;i< bridgeResults.size();i++){
-            System.out.println(bridgeResults.get(i));
+            System.out.print(bridgeResults.get(i));
 
             // 만약 i가 bridgeResult의 사이즈-1과 같다면 종료
             if(i==bridgeResults.size()-1){

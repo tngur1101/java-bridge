@@ -37,11 +37,37 @@ public class BridgeGame {
         bridge = new Bridge(bridgeList);
     }
 
-    public void move() {
+    public boolean move(String direction) {
+        validator.validateWord(direction, UP, DOWN);
+        visited.add(direction);
 
+        return bridge.isRightDirection(direction, visited.size()-1);
     }
 
-    private boolean isGameDone(){
+    public List<String> getBridge(String direction){
+        List<String> bridgeList = new ArrayList<>();
+        for(int i=0;i<visited.size();i++){
+            boolean canGoInThisDirection = bridge.isRightDirection(visited.get(i), i);
+            String result = getResult(i,direction, canGoInThisDirection);
+            bridgeList.add(result);
+        }
+        return bridgeList;
+    }
+
+    private String getResult(int i, String direction, boolean canGoInThisDirection) {
+        String result = "O";
+        if(!canGoInThisDirection){
+            GAME_RESULT = false;
+            result = "X";
+        }
+        if (!visited.get(i).equals(direction)){
+            result = " ";
+        }
+
+        return result;
+    }
+
+    public boolean isGameDone(){
         if(bridge.isCrossedDirection(visited) && GAME_RESULT){
             return true;
         }
